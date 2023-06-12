@@ -1,0 +1,66 @@
+﻿@model Category
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            
+            <h4 class="display-4 fw-bolder">@ViewData["Title"]</h4>
+           
+        </div>
+    </div>
+</header>
+
+<hr />
+
+<section class="py-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <partial name="_PostPartial" model="Model.Posts" />
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <!-- Arama Çubuğu-->
+                <div class="card mb-4">
+                    <div class="card-header">Aramaya İnan...</div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Aranacak karakteri gir, ama düzgün gir..." aria-label="Enter search term..." aria-describedby="button-search">
+                            <button class="btn btn-primary" id="button-search" type="button">Ara!</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Günün Özlü Sözü -->
+                <div class="card mb-4">
+                    <div class="card-header">Günün Özlü Sözü</div>
+                    <div class="card-body">Yayla Kadar Gözüm olsa, tek bakanım sen olmazdın...</div>
+                </div>
+
+                <!-- Duyurular -->
+                <div class="card mb-4">
+                    <div class="card-header">Önemli Duyurular !</div>
+                    <div class="card-body"> Zor zamanlar yaklaşıyor, bu zor zamanları daha rasyonel atlatabilmek için birbirimizi duymaya ihtiyacımız var. Katmanlı Blog Yönetimi, iletişime geçildiği takdirde Duyuru yapmaya hazırdır!    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+</section>
+
+<hr />

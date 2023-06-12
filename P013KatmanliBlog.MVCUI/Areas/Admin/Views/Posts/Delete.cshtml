@@ -1,0 +1,63 @@
+﻿@model P013KatmanliBlog.Core.Entities.Post
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+
+<h3>Silmek İstediğinizden Emin Misiniz?</h3>
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PostMessage)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PostMessage)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PostImage)
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="/Img/@Html.DisplayFor(model => model.PostImage)" height="200" alt="" />
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="/Img/@Html.DisplayFor(model => model.User.ProfilePicture)" height="50" alt="" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a class="btn btn-dark" asp-action="Index">Listeye Geri Dön</a>
+    </form>
+</div>

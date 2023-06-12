@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Post>
+
+@{
+    ViewData["Title"] = "Post Paneli";
+}
+
+
+<p>
+    <a class="btn btn-outline-primary" asp-action="Create">Yeni Post Oluştur</a>
+</p>
+<table class="table">
+         <thead>
+         <tr>
+         <th>
+         @Html.DisplayNameFor(model => model.Title)
+         </th>
+         <th>
+         @Html.DisplayNameFor(model => model.PostMessage)
+         </th>
+         <th>
+         @Html.DisplayNameFor(model => model.PostImage)
+         </th>
+         <th>
+         @Html.DisplayNameFor(model => model.CreateDate)
+         </th>
+         <th>
+         @Html.DisplayNameFor(model => model.Category)
+         </th>
+         <th>
+         @Html.DisplayNameFor(model => model.User.ProfilePicture)
+         </th>
+         <th>
+         @Html.DisplayNameFor(model => model.User.UserName)
+         </th>
+         <th></th>
+         </tr>
+         </thead>
+         <tbody>
+@foreach (var item in Model) {
+         <tr>
+         <td>
+         @Html.DisplayFor(modelItem => item.Title)
+         </td>
+         <td>
+         @Html.DisplayFor(modelItem => item.PostMessage)
+         </td>
+         <td>
+         <img src="/Img/@Html.DisplayFor(modelItem => item.PostImage)" height="200" alt="" />
+         </td>
+         <td>
+         @Html.DisplayFor(modelItem => item.CreateDate)
+         </td>
+         <td>
+         @Html.DisplayFor(modelItem => item.Category.Name)
+         </td>
+         <td>
+         <img src="/Img/@Html.DisplayFor(modelItem => item.User.ProfilePicture)" class="rounded-circle" height="50" alt="" />
+         </td>
+         <td>
+         @Html.DisplayFor(modelItem => item.User.UserName)
+         </td>
+         <td>
+         <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
+         <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+         </td>
+         </tr>
+         }
+</tbody>
+         </table>
+
