@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Post>
+
+
+@foreach (var post in Model)
+{
+    <div class="card mb-4 mt-1 mb-1">
+        <a href="#!"><img class="card-img-top" height="350" width="700" src="/Img/@post.PostImage" alt="@post.Title"></a>
+        <div class="card-body">
+            <div class="small text-muted">@post.CreateDate</div>
+            <h2 class="card-title h4">@post.Title</h2>
+            <p class="card-text">
+
+                @post.PostMessage
+
+
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-primary" asp-controller="Post" asp-action="Detail" asp-route-id="@post.Id" >Daha Fazla Oku...</a>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                        </div>
+                        <div class="col-md-6">
+
+                            
+                               @* <img src="/Img/@post.User.ProfilePicture" alt="" height="30" class="rounded-circle" />*@
+                           
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+}

@@ -1,49 +1,69 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - P013KatmanliBlog.WebAPIUsing</title>
+    <link rel="icon" type="image/x-icon" href="/ViewTemplate/assets/favicon.ico">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/P013KatmanliBlog.WebAPIUsing.styles.css" asp-append-version="true" />
+    <link href="~/ViewTemplate/css/styles.css" rel="stylesheet" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">P013KatmanliBlog.WebAPIUsing</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+
+
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/Img/Panda.jpg" alt="" height="50" class="rounded-circle" />
+                    P013 Katmanlı Blog
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Anasayfa</a></li>
+
+                        @await Component.InvokeAsync("Categories")
+
+
                     </ul>
                 </div>
+
+                @if (Context.Session.GetInt32("userId") == null)
+                {
+
+                    <div class="text-end">
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-primary">Giriş</a> |
+                        <a asp-controller="Account" asp-action="SignIn" class="btn btn-outline-warning">Kaydol</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-end">
+                        <a asp-controller="Account" asp-action="Index" class="btn btn-primary">Hesabım</a> |
+                        <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger">Oturumu Kapat</a>
+                    </div>
+                }
             </div>
         </nav>
     </header>
     <div class="container">
+        @Html.Raw(TempData["Message"])
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - P013KatmanliBlog.WebAPIUsing - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    <footer class="py-2 bg-dark  footer">
+        <div class="container"><p class="m-0 text-center text-white">Copyright © Katmanlı Blog 2023</p></div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/ViewTemplate/js/scripts.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

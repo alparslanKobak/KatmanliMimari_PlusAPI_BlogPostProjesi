@@ -174,7 +174,7 @@ namespace P013KatmanliBlog.MVCUI.Controllers
             return View();
         }
 
-
+        [Route("Logout")]
         public IActionResult Logout()
         {
             try

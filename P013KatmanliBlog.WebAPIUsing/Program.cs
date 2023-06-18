@@ -11,7 +11,7 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x=>
 {
-    x.LoginPath = "/Admin/Login";
+    x.LoginPath = "/Admin/Login/Index";
     x.LogoutPath = "/Admin/Logout";
     x.AccessDeniedPath = "/AccessDenied";
     x.Cookie.Name = "Administrator";

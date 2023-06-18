@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Category>
+
+
+@{
+    foreach (Category item in Model.Where(x=> x.IsActive && x.IsTopMenu))
+    {
+        <li class="nav-item"><a class="nav-link" asp-controller="Categories" asp-action="Index" asp-route-id="@item.Id" > #@item.Name</a></li>
+    }
+
+
+
+
+
+
+}

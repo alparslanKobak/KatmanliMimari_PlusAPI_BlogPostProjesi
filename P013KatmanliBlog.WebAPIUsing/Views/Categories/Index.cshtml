@@ -1,18 +1,24 @@
-﻿@model HomePageViewModel
+﻿@model Category
 
 @{
-    ViewData["Title"] = "Ana Sayfa";
+    ViewData["Title"] = Model.Name;
 }
 
+
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            
+            <h4 class="display-4 fw-bolder">@ViewData["Title"]</h4>
+           
+        </div>
+    </div>
+</header>
+
 <hr />
 
-<div class="text-center">
-    <h1 class="display-4">En Beğenilen Gönderiler</h1>
-
-</div>
-<hr />
 <section class="py-1">
-    <div class="container mt-1 mb-1">
+    <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="row">
@@ -57,4 +63,4 @@
     </div>
 </section>
 
-<hr />
+<hr/>

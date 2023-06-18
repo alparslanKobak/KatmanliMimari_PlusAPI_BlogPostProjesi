@@ -19,4 +19,15 @@
     <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Home\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Shared\_Layout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

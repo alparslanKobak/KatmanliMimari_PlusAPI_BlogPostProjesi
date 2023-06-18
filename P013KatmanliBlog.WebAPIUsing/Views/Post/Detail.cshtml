@@ -1,25 +1,31 @@
-﻿@model HomePageViewModel
-
+﻿@model PostDetailViewModel
 @{
-    ViewData["Title"] = "Ana Sayfa";
+    ViewData["Title"] = Model.Post.Title;
 }
 
-<hr />
 
-<div class="text-center">
-    <h1 class="display-4">En Beğenilen Gönderiler</h1>
-
-</div>
-<hr />
 <section class="py-1">
     <div class="container mt-1 mb-1">
         <div class="row">
             <div class="col-lg-8">
                 <div class="row">
-                    <div class="col-md-12">
-                        <partial name="_PostPartial" model="Model.Posts" />
-                    </div>
 
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="/Img/@Model.Post.PostImage" height="350" width="850" alt="...">
+                        <div class="card-body">
+                            <div class="small text-muted">@Model.Post.CreateDate</div>
+                            <h2 class="card-title">@Model.Post.Title</h2>
+                            <p class="card-text">@Model.Post.PostMessage</p>
+
+                        </div>
+                    </div>
+                    
+
+                </div>
+                <div class="row" >
+                    <div class="col-md-12">
+                        <partial name="_PostPartial" model="Model.RelatedPosts" />
+                    </div>
                 </div>
 
             </div>

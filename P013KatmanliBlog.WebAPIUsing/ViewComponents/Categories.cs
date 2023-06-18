@@ -17,7 +17,7 @@ namespace P013KatmanliBlog.WebAPIUsing.ViewComponents
         {
            
 
-            return View(await _httpClient.GetFromJsonAsync<List<Categories>>(_apiAdres));
+            return View(await _httpClient.GetFromJsonAsync<List<Category>>(_apiAdres));
         }
     }
 }
