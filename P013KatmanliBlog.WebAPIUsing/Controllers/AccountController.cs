@@ -38,7 +38,7 @@ namespace P013KatmanliBlog.WebAPIUsing.Controllers
 
             return View();
         }
-
+        [HttpPost]
         public async Task<IActionResult> SignIn(User user)
         {
             var users = await _httpClient.GetFromJsonAsync<List<User>>(_apiAdres);
@@ -113,7 +113,7 @@ namespace P013KatmanliBlog.WebAPIUsing.Controllers
         {
             return View();
         }
-        [Route("Logout")]
+        
         public IActionResult Logout()
         {
             try
@@ -129,6 +129,7 @@ namespace P013KatmanliBlog.WebAPIUsing.Controllers
             return RedirectToAction(nameof(Index),"Home");
         }
 
+        [HttpPost]
         public async Task<IActionResult> UpdateUser(User? user, IFormFile? ProfilePicture)
         {
             if (user == null)
@@ -163,13 +164,13 @@ namespace P013KatmanliBlog.WebAPIUsing.Controllers
 
                     if (ModelState.IsValid)
                     {
-                        var response = await _httpClient.PutAsJsonAsync(_apiAdres, user);
+                        var response = await _httpClient.PutAsJsonAsync(_apiAdres, kullanici);
 
                         if (response.IsSuccessStatusCode)
                         {
                             TempData["Message"] = "<div class='alert alert-success'>Güncelleme Başarılı!</div>";
 
-                            return RedirectToAction(nameof(Index),"Account");
+                            return RedirectToAction(nameof(Index),kullanici);
                         }
                     }
                 }
@@ -180,7 +181,7 @@ namespace P013KatmanliBlog.WebAPIUsing.Controllers
                 ModelState.AddModelError("", "Güncelleme Başarısız" + e.Message);
             }
 
-            return View(nameof(Index),"Account");
+            return View(nameof(Index),user);
         }
     }
 }
