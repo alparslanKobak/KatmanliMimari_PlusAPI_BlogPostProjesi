@@ -4,13 +4,13 @@
 @foreach (var post in Model)
 {
     <div class="card mb-4 mt-1 mb-1">
-        <a href="#!"><img class="card-img-top" height="350" width="700" src="/Img/@post.PostImage" alt="@post.Title"></a>
+        <a href="#!"><img class="card-img-top" height="350" width="300" src="/Img/@post.PostImage" alt="@post.Title"></a>
         <div class="card-body">
             <div class="small text-muted">@post.CreateDate</div>
             <h2 class="card-title h4">@post.Title</h2>
             <p class="card-text">
 
-                @post.PostMessage
+                @post.PostMessage.ToString().Substring(0,15) ...
 
 
             </p>

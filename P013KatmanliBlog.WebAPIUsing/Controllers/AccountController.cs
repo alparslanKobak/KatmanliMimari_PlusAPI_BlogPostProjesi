@@ -39,7 +39,7 @@ namespace P013KatmanliBlog.WebAPIUsing.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> SignIn(User user)
+        public async Task<IActionResult> SignIn(User user, IFormFile? ProfilePicture)
         {
             var users = await _httpClient.GetFromJsonAsync<List<User>>(_apiAdres);
 
@@ -57,6 +57,10 @@ namespace P013KatmanliBlog.WebAPIUsing.Controllers
                     }
                     else
                     {
+                        if (ProfilePicture != null)
+                        {
+                            user.ProfilePicture = await FileHelper.FileLoaderAsync(ProfilePicture);
+                        }
                         user.UserGuid = Guid.NewGuid();
                         user.IsActive = true;
                         user.IsAdmin = false;

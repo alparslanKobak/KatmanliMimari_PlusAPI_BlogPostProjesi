@@ -17,16 +17,33 @@
                             <h2 class="card-title">@Model.Post.Title</h2>
                             <p class="card-text">@Model.Post.PostMessage</p>
 
+                            <div class="row">  
+                                <div class="col-6">
+
+                                </div>
+                                <div class="col-2 text-center">
+                                    <p class="font-weight-bold text-uppercase"> @Model.Post.User.UserName</p>
+                                </div>
+                                <div class="col-4">
+                                    <img src="~/Img/@Model.Post.User.ProfilePicture" alt="@Model.Post.User.UserName"  class="rounded-circle" height="80"/>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                     
 
                 </div>
-                <div class="row" >
-                    <div class="col-md-12">
+
+                <div class="container-fluid">
+
+                    <div class="flex-row">
+
                         <partial name="_PostPartial" model="Model.RelatedPosts" />
+
                     </div>
                 </div>
+                
 
             </div>
             <div class="col-lg-4">

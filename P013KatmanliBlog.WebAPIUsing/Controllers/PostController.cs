@@ -36,8 +36,18 @@ namespace P013KatmanliBlog.WebAPIUsing.Controllers
 
             var post = await _httpClient.GetFromJsonAsync<Post>(_apiAdres + "/" + id);
 
+            if (post == null)
+            {
+                TempData["Message"] = "<div class='alert alert-danger'>Beklenmedik bir hata oluştu!</div>";
+                return RedirectToAction(nameof(Index), "Home");
+            }
+
             model.Post = post;
 
+            if (posts == null)
+            {
+                TempData["Message"] = "<div class='alert alert-success'>Bu kadarcıkmış ...</div>";
+            }
             model.RelatedPosts = posts.Where(x=> x.CategoryId == post.CategoryId && x.Id!= id).ToList();
 
             if (model == null)
